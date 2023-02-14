@@ -54,10 +54,15 @@ spec:
           items:
             type: boolean
             enum:
-              - 'Enable AMQP'
-              - 'Enable CXF'
-              - 'Enable JPA'
-              - 'Enable SQL'
+              - 'AMQP'
+              - 'CXF'
+              - 'JPA'
+              - 'SQL'
+            enumNames:
+              - 'AMQP'
+              - 'CXF'
+              - 'JPA'
+              - 'SQL'
           uniqueItems: false
           ui:widget: checkboxes
         description:
