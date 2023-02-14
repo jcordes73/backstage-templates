@@ -68,7 +68,7 @@ spec:
               - 'CXF'
               - 'JPA'
               - 'SQL'
-          uniqueItems: false
+          uniqueItems: true
           ui:widget: checkboxes
         owner:
           title: Owner
