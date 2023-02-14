@@ -79,6 +79,27 @@ spec:
           ui:options:
             allowedKinds:
               - Group
+      dependencies:
+        features:
+          oneOf:
+            - properties:
+                features:
+                  enum:
+                    - JPA
+                database:
+                  title: Database
+                  type: string
+                  description: The database to be used
+                  default: postgresql
+                  enum:
+                    - postgresql
+                    - mysql
+                    - mariadb
+                  enumNames:
+                    - 'PostgreSQL'
+                    - 'MySQL'
+                    - 'MariaDB'
+                  ui:widget: radio
     - title: Choose a location
       required:
         - repoUrl
@@ -90,27 +111,6 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
-  dependencies:
-    features:
-      oneOf:
-        - properties:
-            features:
-              enum:
-                - JPA
-            database:
-              title: Database
-              type: string
-              description: The database to be used
-              default: postgresql
-              enum:
-                - postgresql
-                - mysql
-                - mariadb
-              enumNames:
-                - 'PostgreSQL'
-                - 'MySQL'
-                - 'MariaDB'
-              ui:widget: radio
   steps:
     - id: template
       name: Generating component
