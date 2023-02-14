@@ -65,10 +65,10 @@ spec:
           items:
             type: string
             enum:
-              - 'AMQP'
-              - 'CXF'
-              - 'JPA'
-              - 'SQL'
+              - AMQP
+              - CXF
+              - JPA
+              - SQL
           uniqueItems: true
           ui:widget: checkboxes
         owner:
@@ -103,9 +103,9 @@ spec:
               description: The database to be used
               default: postgresql
               enum:
-                - 'postgresql'
-                - 'mysql'
-                - 'mariadb'
+                - postgresql
+                - mysql
+                - mariadb
               enumNames:
                 - 'PostgreSQL'
                 - 'MySQL'
