@@ -4,6 +4,12 @@ metadata:
   name: v1beta3-fuse-springboot
   title: Red Hat Integration Fuse on Spring Boot Template
   description: Scaffolder v1beta3 template for Fuse on Spring Boot
+  tags:
+    - recommended
+    - java
+    - camel
+    - springboot
+    - maven
 spec:
   owner: backstage/integration-core
   type: service
