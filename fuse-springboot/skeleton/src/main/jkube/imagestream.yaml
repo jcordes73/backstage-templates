@@ -1,0 +1,5 @@
+metadata:
+ annotations:
+ labels:
+   app: ${{values.component_id}}
+ name: ${{values.component_id}}

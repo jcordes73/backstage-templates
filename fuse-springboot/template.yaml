@@ -1,0 +1,122 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: v1beta3-fuse-springboot
+  title: Red Hat Integration Fuse on Spring Boot Template
+  description: Scaffolder v1beta3 template for Fuse on Spring Boot
+spec:
+  owner: backstage/integration-core
+  type: service
+  parameters:
+    - title: Maven Project information
+      required:
+        - component_id
+        - owner
+        - java_package_name
+      properties:
+        component_id:
+          title: Name
+          type: string
+          description: Unique name of the component
+          ui:field: EntityNamePicker
+        fuse_version:
+          title: Fuse Version
+          type: string
+          description: The Fuse Version to be used
+          default: 7.11
+          enum:
+            - '7.11.0.fuse-sb2-7_11_0-00028-redhat-00001'
+          enumNames:
+            - '7.11'
+        group_id:
+          title: Maven Group ID
+          type: string
+          description: Maven Group ID
+          default: 'com.redhat'
+        artifact_id:
+          title: Maven Artifact ID
+          type: string
+          description: Maven Artifact ID
+          default: 'fuse'
+        artifact_version:
+          title: Maven Artifact Version
+          type: string
+          description: Maven Artifact Version
+          default: '1.0-SNAPSHOT'
+        java_package_name:
+          title: Java Package Name
+          type: string
+          description: Name for the java package. eg (com.redhat)
+          default: 'com.redhat.fuse'
+        features:
+          title: Select features
+          type: array
+          items:
+            type: boolean
+            enum:
+              - 'Enable AMQP'
+              - 'Enable CXF'
+              - 'Enable JPA'
+              - 'Enable SQL'
+          uniqueItems: false
+          ui:widget: checkboxes
+        description:
+          title: Description
+          type: string
+          description: Fuse on Spring Boot project.
+        owner:
+          title: Owner
+          type: string
+          description: IdP owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Choose a location
+      required:
+        - repoUrl
+      properties:
+        repoUrl:
+          title: Repository Location
+          type: string
+          ui:field: RepoUrlPicker
+          ui:options:
+            allowedHosts:
+              - github.com
+  steps:
+    - id: template
+      name: Generating component
+      action: fetch:template
+      input:
+        url: ./skeleton
+        values:
+          component_id: ${{ parameters.component_id }}
+          description: ${{ parameters.description }}
+          group_id: ${{ parameters.group_id }}
+          artifact_id: ${{ parameters.artifact_id }}
+          java_package_name: ${{ parameters.java_package_name }}
+          owner: ${{ parameters.owner }}
+          organization: ${{ (parameters.repoUrl | parseRepoUrl).owner }}
+          destination: ${{ parameters.repoUrl | parseRepoUrl }}
+          http_port: 8080
+    - id: publish
+      name: Publishing to Source Code Repository
+      action: publish:github
+      input:
+        description: This is ${{ parameters.component_id }}
+        repoUrl: ${{ parameters.repoUrl }}
+        defaultBranch: main
+        repoVisibility: public
+    - id: register
+      name: Registering to the Catalog
+      action: catalog:register
+      input:
+        repoContentsUrl: ${{ steps.publish.output.repoContentsUrl }}
+        catalogInfoPath: "/catalog-info.yaml"
+  output:
+    links:
+      - title: Source Code Repository
+        url: ${{ steps.publish.output.remoteUrl }}
+      - title: Open Component in catalog
+        icon: catalog
+        entityRef: ${{ steps.register.output.entityRef }}
