@@ -19,6 +19,10 @@ spec:
           type: string
           description: Unique name of the component
           ui:field: EntityNamePicker
+        description:
+          title: Description
+          type: string
+          description: Fuse on Spring Boot project.
         fuse_version:
           title: Fuse Version
           type: string
@@ -52,23 +56,14 @@ spec:
           title: Select features
           type: array
           items:
-            type: boolean
+            type: string
             enum:
-              - 'AMQP'
-              - 'CXF'
-              - 'JPA'
-              - 'SQL'
-            enumNames:
               - 'AMQP'
               - 'CXF'
               - 'JPA'
               - 'SQL'
           uniqueItems: false
           ui:widget: checkboxes
-        description:
-          title: Description
-          type: string
-          description: Fuse on Spring Boot project.
         owner:
           title: Owner
           type: string
