@@ -23,21 +23,22 @@ spec:
         component_id:
           title: Name
           type: string
-          description: Unique name of the component
+          description: Name of the project
           ui:field: EntityNamePicker
         description:
           title: Description
           type: string
-          description: Fuse on Spring Boot project.
+          description: Description
+          default: 'Fuse on Spring Boot project'
         fuse_version:
           title: Fuse Version
           type: string
           description: The Fuse Version to be used
-          default: 7.11
+          default: 7.11.0.fuse-sb2-7_11_0-00028-redhat-00001
           enum:
-            - '7.11.0.fuse-sb2-7_11_0-00028-redhat-00001'
+            - 7.11.0.fuse-sb2-7_11_0-00028-redhat-00001
           enumNames:
-            - '7.11'
+            - 7.11
           ui:widget: radio
         group_id:
           title: Maven Group ID
@@ -100,6 +101,8 @@ spec:
                     - 'MySQL'
                     - 'MariaDB'
                   ui:widget: radio
+                required:
+                  - database
     - title: Choose a location
       required:
         - repoUrl
