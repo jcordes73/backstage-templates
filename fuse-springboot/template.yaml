@@ -56,7 +56,7 @@ spec:
         java_package_name:
           title: Java Package Name
           type: string
-          description: Name for the java package. eg (com.redhat)
+          description: Name for the java package
           default: 'com.redhat.fuse'
         features:
           title: Select features
