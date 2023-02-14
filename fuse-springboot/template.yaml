@@ -81,7 +81,7 @@ spec:
             allowedKinds:
               - Group
       dependencies:
-        features:
+        condition:
           oneOf:
             - properties:
                 features:
