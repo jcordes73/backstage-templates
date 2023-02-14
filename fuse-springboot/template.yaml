@@ -81,7 +81,7 @@ spec:
             allowedKinds:
               - Group
       dependencies:
-        condition:
+        features:
           oneOf:
             - properties:
                 features:
@@ -101,8 +101,6 @@ spec:
                     - 'MySQL'
                     - 'MariaDB'
                   ui:widget: radio
-                required:
-                  - database
     - title: Choose a location
       required:
         - repoUrl
