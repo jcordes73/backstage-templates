@@ -38,6 +38,7 @@ spec:
             - '7.11.0.fuse-sb2-7_11_0-00028-redhat-00001'
           enumNames:
             - '7.11'
+          ui:widget: radio
         group_id:
           title: Maven Group ID
           type: string
@@ -89,6 +90,27 @@ spec:
           ui:options:
             allowedHosts:
               - github.com
+  dependencies:
+    features:
+      oneOf:
+        - properties:
+            features:
+              enum:
+                - JPA
+            database:
+              title: Database
+              type: string
+              description: The database to be used
+              default: postgresql
+              enum:
+                - 'postgresql'
+                - 'mysql'
+                - 'mariadb'
+              enumNames:
+                - 'PostgreSQL'
+                - 'MySQL'
+                - 'MariaDB'
+              ui:widget: radio
   steps:
     - id: template
       name: Generating component
@@ -105,6 +127,15 @@ spec:
           organization: ${{ (parameters.repoUrl | parseRepoUrl).owner }}
           destination: ${{ parameters.repoUrl | parseRepoUrl }}
           http_port: 8080
+    - id: template-persistence
+      if: ${{ parameters.features }}
+      name: Generating Persistence Resources
+      action: fetch:template
+      input:
+        url: ./persistence
+        copyWithoutRender: []
+        values:
+        targetPath: ./src/main/resources/META-INF
     - id: publish
       name: Publishing to Source Code Repository
       action: publish:github
