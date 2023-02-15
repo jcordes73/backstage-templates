@@ -90,7 +90,9 @@ spec:
           anyOf:
             - properties:
                 features:
+                  type: array
                   items:
+                    type: string
                     enum:
                       - JPA
                 database_type:
@@ -107,6 +109,16 @@ spec:
                     - 'MySQL'
                     - 'MariaDB'
                   ui:widget: radio
+                database_host:
+                  title: Database Host
+                  type: string
+                  description: Database Host
+                  default: 'localhost'
+                database_port:
+                  title: Database Port
+                  type: string
+                  description: Database Port
+                  default: 5432
                 database_name:
                   title: Database Name
                   type: string
@@ -129,7 +141,9 @@ spec:
                   - database_user_password
             - properties:
                 features:
+                   type: array
                    items:
+                     type: string
                      enum:
                        - AMQP
                  amqp_broker_host:
