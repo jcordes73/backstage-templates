@@ -193,7 +193,6 @@ spec:
           fuse_version: ${{ parameters.fuse_version }}
           project_slug: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
           owner: ${{ parameters.owner }}
-    backstage.io/techdocs-ref: dir:.
 spec:
   type: website
   lifecycle: experimental
