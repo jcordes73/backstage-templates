@@ -30,16 +30,6 @@ spec:
           type: string
           description: Description
           default: 'Fuse on Spring Boot project'
-        fuse_version:
-          title: Fuse Version
-          type: string
-          description: The Fuse Version to be used
-          default: 7.11.0.fuse-sb2-7_11_0-00028-redhat-00001
-          enum:
-            - 7.11.0.fuse-sb2-7_11_0-00028-redhat-00001
-          enumNames:
-            - 7.11
-          ui:widget: radio
         group_id:
           title: Maven Group ID
           type: string
@@ -60,6 +50,29 @@ spec:
           type: string
           description: Name for the java package
           default: 'com.redhat.fuse'
+        owner:
+          title: Owner
+          type: string
+          description: IdP owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
+    - title: Apache Camel Features
+      required:
+        - fuse_version
+        - features
+      properties:
+        fuse_version:
+          title: Fuse Version
+          type: string
+          description: The Fuse Version to be used
+          default: 7.11.0.fuse-sb2-7_11_0-00028-redhat-00001
+          enum:
+            - 7.11.0.fuse-sb2-7_11_0-00028-redhat-00001
+          enumNames:
+            - 7.11
+          ui:widget: radio
         features:
           title: Select features
           type: array
@@ -72,14 +85,6 @@ spec:
               - SQL
           uniqueItems: true
           ui:widget: checkboxes
-        owner:
-          title: Owner
-          type: string
-          description: IdP owner of the component
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
       dependencies:
         features:
           oneOf:
