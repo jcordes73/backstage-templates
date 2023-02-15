@@ -90,8 +90,9 @@ spec:
           oneOf:
             - properties:
                 features:
-                  enum:
-                    - JPA
+                  items:
+                    enum:
+                      - JPA
 #                database_type:
 #                  title: Database
 #                  type: string
