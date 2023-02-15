@@ -17,7 +17,10 @@ spec:
     - title: Maven Project information
       required:
         - component_id
-        - owner
+        - description
+        - group_id
+        - artifact_id
+        - artifact_version
         - java_package_name
       properties:
         component_id:
