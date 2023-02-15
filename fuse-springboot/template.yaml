@@ -85,9 +85,11 @@ spec:
               - SQL
           uniqueItems: true
           ui:widget: checkboxes
+          ui:options:
+            inline: true
       dependencies:
         features:
-          allOf:
+          anyOf:
             - properties:
                 features:
                   type: array
