@@ -87,7 +87,7 @@ spec:
                 features:
                   enum:
                     - JPA
-                database:
+                database_type:
                   title: Database
                   type: string
                   description: The database to be used
@@ -101,8 +101,26 @@ spec:
                     - 'MySQL'
                     - 'MariaDB'
                   ui:widget: radio
+                database_name:
+                  title: Database Name
+                  type: string
+                  description: Database Name 
+                  default: ${{ parameters.component_id }}
+                database_user:
+                  title: Database User
+                  type: string
+                  description: Database User
+                  default: 'user'
+                database_user_password:
+                  title: Database User Password
+                  type: string
+                  description: Database User Password
+                  default: 'password'
                 required:
-                  - database
+                  - database_type
+                  - database_name
+                  - database_user
+                  - database_user_password
     - title: Choose a location
       required:
         - repoUrl
