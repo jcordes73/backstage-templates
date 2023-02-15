@@ -87,7 +87,7 @@ spec:
           ui:widget: checkboxes
       dependencies:
         features:
-          oneOf:
+          anyOf:
             - properties:
                 features:
                   items:
