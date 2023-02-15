@@ -61,7 +61,6 @@ spec:
     - title: Apache Camel Features
       required:
         - fuse_version
-        - features
       properties:
         fuse_version:
           title: Fuse Version
