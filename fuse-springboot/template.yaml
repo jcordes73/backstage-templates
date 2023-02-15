@@ -206,9 +206,10 @@ spec:
       name: Publishing to Source Code Repository
       action: publish:github
       input:
+        allowedHosts: ['github.com']
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: main
+        defaultBranch: master
         repoVisibility: public
     - id: register
       name: Registering to the Catalog
