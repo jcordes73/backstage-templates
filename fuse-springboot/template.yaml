@@ -127,7 +127,6 @@ spec:
                   - database_name
                   - database_user
                   - database_user_password
-        features:
           oneOf:
             - properties:
                 features:
