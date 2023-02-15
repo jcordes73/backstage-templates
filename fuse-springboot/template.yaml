@@ -157,10 +157,19 @@ spec:
                   type: string
                   description: AMQP Broker User Password
                   default: 'admin'
-    - title: Choose a location
+    - title: Choose an organizationl Owner and a GitHub location
       required:
+        - owner
         - repoUrl
       properties:
+        owner:
+          title: Owner
+          type: string
+          description: IdP owner of the component
+          ui:field: OwnerPicker
+          ui:options:
+            allowedKinds:
+              - Group
         repoUrl:
           title: Repository Location
           type: string
@@ -182,6 +191,14 @@ spec:
           artifact_version: ${{ parameters.artifact_version }}
           java_package_name: ${{ parameters.java_package_name }}
           fuse_version: ${{ parameters.fuse_version }}
+          project_slug: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
+          owner: ${{ parameters.owner }}
+    backstage.io/techdocs-ref: dir:.
+spec:
+  type: website
+  lifecycle: experimental
+  owner: ${{values.owner | dump}}
+
     - id: template-persistence
       if: ${{ parameters.features }}
       name: Generating Persistence Resources
