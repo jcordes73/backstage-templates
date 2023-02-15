@@ -87,20 +87,20 @@ spec:
                 features:
                   enum:
                     - JPA
-                database_type:
-                  title: Database
-                  type: string
-                  description: The database to be used
-                  default: postgresql
-                  enum:
-                    - postgresql
-                    - mysql
-                    - mariadb
-                  enumNames:
-                    - 'PostgreSQL'
-                    - 'MySQL'
-                    - 'MariaDB'
-                  ui:widget: radio
+#                database_type:
+#                  title: Database
+#                  type: string
+#                  description: The database to be used
+#                  default: postgresql
+#                  enum:
+#                    - postgresql
+#                    - mysql
+#                    - mariadb
+#                  enumNames:
+#                    - 'PostgreSQL'
+#                    - 'MySQL'
+#                    - 'MariaDB'
+#                  ui:widget: radio
                 database_name:
                   title: Database Name
                   type: string
