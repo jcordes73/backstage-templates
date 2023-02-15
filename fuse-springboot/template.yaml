@@ -193,11 +193,6 @@ spec:
           fuse_version: ${{ parameters.fuse_version }}
           project_slug: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
           owner: ${{ parameters.owner }}
-spec:
-  type: website
-  lifecycle: experimental
-  owner: ${{values.owner | dump}}
-
     - id: template-persistence
       if: ${{ parameters.features }}
       name: Generating Persistence Resources
