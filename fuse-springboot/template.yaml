@@ -136,11 +136,11 @@ spec:
                   type: string
                   description: Database User Password
                   default: 'password'
-                required:
-                  - database_type
-                  - database_name
-                  - database_user
-                  - database_user_password
+              required:
+                - database_type
+                - database_name
+                - database_user
+                - database_user_password
             - properties:
                 features:
                   type: array
@@ -168,11 +168,11 @@ spec:
                   type: string
                   description: AMQP Broker User Password
                   default: 'admin'
-                required:
-                  - amqp_broker_host
-                  - amqp_broker_port
-                  - amqp_broker_user
-                  - amqp_broker_user_password
+              required:
+                - amqp_broker_host
+                - amqp_broker_port
+                - amqp_broker_user
+                - amqp_broker_user_password
     - title: Choose a location
       required:
         - repoUrl
