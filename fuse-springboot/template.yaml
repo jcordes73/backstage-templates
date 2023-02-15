@@ -141,36 +141,36 @@ spec:
                   - database_user_password
             - properties:
                 features:
-                   type: array
-                   items:
-                     type: string
-                     enum:
-                       - AMQP
-                 amqp_broker_host:
-                   title: AMQP Broker
-                   type: string
-                   description: The AMQP Broker to be used
-                   default: amq-broker-hdls-svc
-                 amqp_broker_port:
-                   title: AMQP Broker Port
-                   type: string
-                   description: AMQP Broker Port
-                   default: 5672
-                 amqp_broker_user:
-                   title: AMQP Broker User
-                   type: string
-                   description: AMQP Broker User
-                   default: 'admin'
-                 amqp_broker_user_password:
-                   title: AMQP Broker User Password
-                   type: string
-                   description: AMQP Broker User Password
-                   default: 'admin'
-                 required:
-                   - amqp_broker_host
-                   - amqp_broker_port
-                   - amqp_broker_user
-                   - amqp_broker_user_password
+                  type: array
+                  items:
+                    type: string
+                    enum:
+                      - AMQP
+                amqp_broker_host:
+                  title: AMQP Broker
+                  type: string
+                  description: The AMQP Broker to be used
+                  default: amq-broker-hdls-svc
+                amqp_broker_port:
+                  title: AMQP Broker Port
+                  type: string
+                  description: AMQP Broker Port
+                  default: 5672
+                amqp_broker_user:
+                  title: AMQP Broker User
+                  type: string
+                  description: AMQP Broker User
+                  default: 'admin'
+                amqp_broker_user_password:
+                  title: AMQP Broker User Password
+                  type: string
+                  description: AMQP Broker User Password
+                  default: 'admin'
+                required:
+                  - amqp_broker_host
+                  - amqp_broker_port
+                  - amqp_broker_user
+                  - amqp_broker_user_password
     - title: Choose a location
       required:
         - repoUrl
