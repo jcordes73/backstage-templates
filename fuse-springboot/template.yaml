@@ -89,7 +89,7 @@ spec:
             inline: true
       dependencies:
         features:
-          allOf:
+          anyOf:
             - properties:
                 features:
                   type: array
