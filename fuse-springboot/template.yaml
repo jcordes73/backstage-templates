@@ -50,14 +50,6 @@ spec:
           type: string
           description: Name for the java package
           default: 'com.redhat.fuse'
-        owner:
-          title: Owner
-          type: string
-          description: IdP owner of the component
-          ui:field: OwnerPicker
-          ui:options:
-            allowedKinds:
-              - Group
     - title: Apache Camel Features
       required:
         - fuse_version
@@ -184,11 +176,9 @@ spec:
           description: ${{ parameters.description }}
           group_id: ${{ parameters.group_id }}
           artifact_id: ${{ parameters.artifact_id }}
+          artifact_version: ${{ parameters.artifact_version }}
           java_package_name: ${{ parameters.java_package_name }}
-          owner: ${{ parameters.owner }}
-          organization: ${{ (parameters.repoUrl | parseRepoUrl).owner }}
-          destination: ${{ parameters.repoUrl | parseRepoUrl }}
-          http_port: 8080
+          fuse_version: ${{ parameters.fuse_version }}
     - id: template-persistence
       if: ${{ parameters.features }}
       name: Generating Persistence Resources
