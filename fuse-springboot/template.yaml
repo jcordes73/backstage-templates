@@ -209,7 +209,7 @@ spec:
         allowedHosts: ['github.com']
         description: This is ${{ parameters.component_id }}
         repoUrl: ${{ parameters.repoUrl }}
-        defaultBranch: master
+        defaultBranch: main
         repoVisibility: public
     - id: register
       name: Registering to the Catalog
