@@ -24,8 +24,7 @@
           http://cxf.apache.org/transports/http/configuration
 	  http://cxf.apache.org/schemas/configuration/http-conf.xsd">
 
-{% for feature in values.features -%}
-{% if feature == 'AMQP' %}
+{% if values.amqp %}
   <bean id="jmsConnectionFactory"
         class="org.apache.qpid.jms.JmsConnectionFactory"
         primary="true" xmlns="http://www.springframework.org/schema/beans">
@@ -47,7 +46,7 @@
     <property name="configuration" ref="jmsConfig" />
   </bean>
 {% endif %}
-{% if feature == 'JPA' %}
+{% if values.jpa %}
   <bean id="jpa" class="org.apache.camel.component.jpa.JpaComponent">
     <property name="entityManagerFactory" ref="entityManagerFactory"/>
     <property name="transactionManager" ref="jpaTxManager"/>
@@ -59,7 +58,6 @@
     <property name="persistenceUnitName" value="persistenceUnit"/>
   </bean>
 {% endif %}
-{%- endfor %}
   <camelContext xmlns="http://camel.apache.org/schema/spring" streamCache="true">
     <route>
       <from uri="timer:timer"/>

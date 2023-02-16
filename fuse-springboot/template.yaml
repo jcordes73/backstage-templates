@@ -67,30 +67,24 @@ spec:
           enumNames:
             - 7.11
           ui:widget: radio
-        features:
-          title: Select features
-          type: array
-          items:
-            type: string
-            enum:
-              - AMQP
-              - CXF
-              - JPA
-              - SQL
-          uniqueItems: true
+        amqp:
+          title: AMQP
+          type: boolean
           ui:widget: checkboxes
-          ui:options:
-            inline: true
+        cxf:
+          title: CXF
+          type: boolean
+          ui:widget: checkboxes
+        database:
+          title: JPA
+          type: boolean
+          ui:widget: checkboxes 
       dependencies:
-        features:
-          allOf:
+        jpa:
+          oneOf:
             - properties:
-                features:
-                  type: array
-                  items:
-                    type: string
-                    enum:
-                      - JPA
+                jpa:
+                  boolean: yes
                 database_type:
                   title: Database
                   type: string
@@ -130,13 +124,11 @@ spec:
                   type: string
                   description: Database User Password
                   default: 'password'
+        amqp:
+          oneOf:
             - properties:
-                features:
-                  type: array
-                  items:
-                    type: string
-                    enum:
-                      - AMQP
+                amqp:
+                  boolean: yes
                 amqp_broker_host:
                   title: AMQP Broker
                   type: string
@@ -199,8 +191,20 @@ spec:
           fuse_version: ${{ parameters.fuse_version }}
           project_slug: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
           owner: ${{ parameters.owner }}
+          amqp: $${ parameters.amqp }}
+          amqp_broker_host: ${{ parameters.amqp_broker_host }}
+          amqp_broker_port: ${{ parameters.amqp_broker_port }}
+          amqp_broker_user: ${{ parameters.amqp_user }}
+          amqp_broker_user_password: ${{ parameters.amqp_broker_user_password }}
+          database: ${{ parameters.database }}
+          database_type: ${{ parameters.database_type }}
+          database_host: ${{ parameters.database_host }}
+          database_port: ${{ parameters.database_port }}
+          database_name: ${{ parameters.database_name }}
+          database_user: ${{ parameters.database_user }}
+          database_user_password: ${{ parameters.database_user_password }}
     - id: template-persistence
-      if: ${{ parameters.features }}
+      if: ${{ parameters.database }}
       name: Generating Persistence Resources
       action: fetch:template
       input:

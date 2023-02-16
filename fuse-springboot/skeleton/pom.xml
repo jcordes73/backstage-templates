@@ -69,14 +69,13 @@
         <artifactId>jaeger-client</artifactId>
         <version>${jaeger.version}</version>
       </dependency>
-      {% for feature in values.features -%}
-      {% if feature == 'AMQP' %}
+      {% if values.amqp %}
       <dependency>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-amqp</artifactId>
       </dependency>
       {% endif %}
-      {% if feature == 'CXF' %}
+      {% if values.cxf %}
       <dependency>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-spring-boot-starter-jaxws</artifactId>
@@ -94,7 +93,7 @@
         <artifactId>cxf-rt-transports-http-jetty</artifactId>
       </dependency>
       {% endif %}
-      {% if feature == 'JPA' %}
+      {% if values.jpa %}
       <dependency>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-jpa-starter</artifactId>
@@ -104,7 +103,7 @@
         <artifactId>hibernate-entitymanager</artifactId>
       </dependency>
       {% endif %}
-      {% if feature == 'SQL' %}
+      {% if values.sql %}
       <dependency>
         <groupId>org.apache.camel</groupId>
         <artifactId>camel-sql-starter</artifactId>
@@ -114,7 +113,6 @@
         <artifactId>spring-boot-starter-jdbc</artifactId>
       </dependency>
       {% endif %}
-      {%- endfor %}
       <dependency>
         <groupId>junit</groupId>
         <artifactId>junit</artifactId>
