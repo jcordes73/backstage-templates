@@ -83,11 +83,36 @@ spec:
           ui:widget: radio
           default: false
       dependencies:
+        amqp:
+          oneOf:
+            - properties:
+                amqp:
+                  boolean: true
+                amqp_broker_host:
+                  title: AMQP Broker
+                  type: string
+                  description: The AMQP Broker to be used
+                  default: amq-broker-hdls-svc
+                amqp_broker_port:
+                  title: AMQP Broker Port
+                  type: string
+                  description: AMQP Broker Port
+                  default: 5672
+                amqp_broker_user:
+                  title: AMQP Broker User
+                  type: string
+                  description: AMQP Broker User
+                  default: 'admin'
+                amqp_broker_user_password:
+                  title: AMQP Broker User Password
+                  type: string
+                  description: AMQP Broker User Password
+                  default: 'admin'
         jpa:
           oneOf:
             - properties:
                 jpa:
-                  boolean: yes
+                  boolean: true
                 database_type:
                   title: Database
                   type: string
@@ -127,31 +152,6 @@ spec:
                   type: string
                   description: Database User Password
                   default: 'password'
-        amqp:
-          oneOf:
-            - properties:
-                amqp:
-                  boolean: yes
-                amqp_broker_host:
-                  title: AMQP Broker
-                  type: string
-                  description: The AMQP Broker to be used
-                  default: amq-broker-hdls-svc
-                amqp_broker_port:
-                  title: AMQP Broker Port
-                  type: string
-                  description: AMQP Broker Port
-                  default: 5672
-                amqp_broker_user:
-                  title: AMQP Broker User
-                  type: string
-                  description: AMQP Broker User
-                  default: 'admin'
-                amqp_broker_user_password:
-                  title: AMQP Broker User Password
-                  type: string
-                  description: AMQP Broker User Password
-                  default: 'admin'
     - title: Choose an organizationl Owner and a GitHub location
       required:
         - owner
@@ -194,11 +194,12 @@ spec:
           fuse_version: ${{ parameters.fuse_version }}
           project_slug: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
           owner: ${{ parameters.owner }}
-          amqp: $${ parameters.amqp }}
+          amqp: ${{ parameters.amqp }}
           amqp_broker_host: ${{ parameters.amqp_broker_host }}
           amqp_broker_port: ${{ parameters.amqp_broker_port }}
           amqp_broker_user: ${{ parameters.amqp_user }}
           amqp_broker_user_password: ${{ parameters.amqp_broker_user_password }}
+          cxf: ${{ parameters.cxf }}
           database: ${{ parameters.database }}
           database_type: ${{ parameters.database_type }}
           database_host: ${{ parameters.database_host }}
