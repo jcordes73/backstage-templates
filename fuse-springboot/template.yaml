@@ -86,8 +86,7 @@ spec:
         amqp:
           oneOf:
             - properties:
-                amqp:
-                  boolean: true
+                amqp: true
                 amqp_broker_host:
                   title: AMQP Broker
                   type: string
@@ -111,8 +110,7 @@ spec:
         jpa:
           oneOf:
             - properties:
-                jpa:
-                  boolean: true
+                jpa: true
                 database_type:
                   title: Database
                   type: string
