@@ -195,7 +195,7 @@ spec:
           artifact_id: ${{ parameters.artifact_id }}
           artifact_version: ${{ parameters.artifact_version }}
           java_package_name: ${{ parameters.java_package_name }}
-          java_package_dir: ${{ parameters.java_package_name | replace(".","/") }}
+          java_package_dir: ${{ parameters.java_package_name | replace("\.","/") }}
           fuse_version: ${{ parameters.fuse_version }}
           project_slug: ${{ (parameters.repoUrl | parseRepoUrl).owner }}/${{ (parameters.repoUrl | parseRepoUrl).repo }}
           owner: ${{ parameters.owner }}
