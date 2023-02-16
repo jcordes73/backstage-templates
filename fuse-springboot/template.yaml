@@ -203,13 +203,13 @@ spec:
           amqp_broker_user: ${{ parameters.amqp_user }}
           amqp_broker_user_password: ${{ parameters.amqp_broker_user_password }}
           cxf: ${{ parameters.cxf }}
-          database: ${{ parameters.database }}
           database_type: ${{ parameters.database_type }}
           database_host: ${{ parameters.database_host }}
           database_port: ${{ parameters.database_port }}
           database_name: ${{ parameters.database_name }}
           database_user: ${{ parameters.database_user }}
           database_user_password: ${{ parameters.database_user_password }}
+          jpa: ${{ parameters.jpa }}
     - id: template-persistence
       if: ${{ parameters.jpa }}
       name: Generating Persistence Resources
@@ -218,6 +218,13 @@ spec:
         url: ./persistence
         copyWithoutRender: []
         values:
+          database: ${{ parameters.database }}
+          database_type: ${{ parameters.database_type }}
+          database_host: ${{ parameters.database_host }}
+          database_port: ${{ parameters.database_port }}
+          database_name: ${{ parameters.database_name }}
+          database_user: ${{ parameters.database_user }}
+          database_user_password: ${{ parameters.database_user_password }}
         targetPath: ./src/main/resources/META-INF
     - id: publish
       name: Publishing to Source Code Repository
