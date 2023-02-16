@@ -5,7 +5,7 @@
     <groupId>${{values.group_id}}</groupId>
     <artifactId>${{values.artifact_id}}</artifactId>
     <version>${{values.artifact_version}}</version>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <name>${{values.component_id}}</name>
     <description>${{values.description}}</description>
@@ -59,6 +59,15 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-actuator</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-opentracing-starter</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>io.jaegertracing</groupId>
+        <artifactId>jaeger-client</artifactId>
+        <version>${jaeger.version}</version>
       </dependency>
       {% for feature in values.features -%}
       {% if feature == 'AMQP' %}
@@ -280,7 +289,7 @@
 	      <artifactId>spring-boot-maven-plugin</artifactId>
 	      <version>${fuse.bom.version}</version>
               <configuration>
-                <mainClass>com.redhat.camel.Application</mainClass>
+                <mainClass>${{values.java_package_name}}.Application</mainClass>
               </configuration>
               <executions>
                 <execution>
