@@ -211,7 +211,7 @@ spec:
           database_user: ${{ parameters.database_user }}
           database_user_password: ${{ parameters.database_user_password }}
     - id: template-persistence
-      if: ${{ parameters.database }}
+      if: ${{ parameters.jpa }}
       name: Generating Persistence Resources
       action: fetch:template
       input:
