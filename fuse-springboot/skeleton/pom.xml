@@ -19,7 +19,8 @@
         <jkube.generator.fromMode>istag</jkube.generator.fromMode>
         <jkube.enricher.jkube-openshift-route.tlsTermination>edge</jkube.enricher.jkube-openshift-route.tlsTermination>
         <jkube.generator.java-exec.prometheusPort>9779</jkube.generator.java-exec.prometheusPort>
-        <jkube.generator.java-exec.webPort>8080</jkube.generator.java-exec.webPort>
+	<jkube.generator.java-exec.webPort>8080</jkube.generator.java-exec.webPort>
+	<postgresql.version>42.2.12</postgresql.version>
         <jaeger.version>0.35.5</jaeger.version>
         <maven-compiler-plugin.version>3.7.0</maven-compiler-plugin.version>
         <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
@@ -111,6 +112,13 @@
       <dependency>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-jdbc</artifactId>
+      </dependency>
+      {% endif %}
+      {% if values.database_type == 'postgresql' %}
+      <dependency>
+        <groupId>org.postgresql</groupId>
+        <artifactId>postgresql</artifactId>
+	<version>${postgresql.version}</version>
       </dependency>
       {% endif %}
       <dependency>
