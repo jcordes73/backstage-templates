@@ -89,7 +89,7 @@ spec:
         amqp:
           oneOf:
             - properties:
-                jpa:
+                amqp:
                   const: true
                 amqp_broker_host:
                   title: AMQP Broker
