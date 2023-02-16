@@ -70,15 +70,18 @@ spec:
         amqp:
           title: AMQP
           type: boolean
-          ui:widget: checkboxes
+          ui:widget: radio
+          default: false
         cxf:
           title: CXF
           type: boolean
-          ui:widget: checkboxes
+          ui:widget: radio
+          default: false
         database:
           title: JPA
           type: boolean
-          ui:widget: checkboxes 
+          ui:widget: radio
+          default: false
       dependencies:
         jpa:
           oneOf:
