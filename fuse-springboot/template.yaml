@@ -215,7 +215,7 @@ spec:
           amqp: ${{ parameters.amqp }}
           amqp_broker_host: ${{ parameters.amqp_broker_host }}
           amqp_broker_port: ${{ parameters.amqp_broker_port }}
-          amqp_broker_user: ${{ parameters.amqp_user }}
+          amqp_broker_user: ${{ parameters.amqp_broker_user }}
           amqp_broker_user_password: ${{ parameters.amqp_broker_user_password }}
           cxf: ${{ parameters.cxf }}
           database_type: ${{ parameters.database_type }}
