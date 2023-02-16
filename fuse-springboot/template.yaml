@@ -85,6 +85,11 @@ spec:
           type: boolean
           ui:widget: radio
           default: false
+        kafka:
+          title: Kafka
+          type: boolean
+          ui:widget: radio
+          default: false
       dependencies:
         amqp:
           oneOf:
@@ -155,6 +160,16 @@ spec:
                   type: string
                   description: Database User Password
                   default: 'password'
+        kafka:
+          oneOf:
+            - properties:
+                kafka:
+                  const: true
+                kafka_brokers:
+                  title: Kafka Brokers
+                  type: string
+                  description: The Kafka Brokers to be used
+                  default: my-cluster-kafka-bootstrap:9092
     - title: Choose an organizationl Owner and a GitHub location
       required:
         - owner
@@ -210,6 +225,8 @@ spec:
           database_user: ${{ parameters.database_user }}
           database_user_password: ${{ parameters.database_user_password }}
           jpa: ${{ parameters.jpa }}
+          kafka: ${{ parameters.kafka }}
+          kafka_brokers: ${{ parameters.kafka_brokers }}
     - id: template-persistence
       if: ${{ parameters.jpa }}
       name: Generating Persistence Resources

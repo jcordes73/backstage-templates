@@ -104,6 +104,12 @@
         <artifactId>hibernate-entitymanager</artifactId>
       </dependency>
       {% endif %}
+      {% if values.kafka %}
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-kafka-starter</artifactId>
+      </dependency>
+      {% endif %}
       {% if values.sql %}
       <dependency>
         <groupId>org.apache.camel</groupId>
