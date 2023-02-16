@@ -98,7 +98,7 @@ spec:
                   default: amq-broker-hdls-svc
                 amqp_broker_port:
                   title: AMQP Broker Port
-                  type: string
+                  type: number
                   description: AMQP Broker Port
                   default: 5672
                 amqp_broker_user:
@@ -137,7 +137,7 @@ spec:
                   default: 'localhost'
                 database_port:
                   title: Database Port
-                  type: string
+                  type: number
                   description: Database Port
                   default: 5432
                 database_name:
