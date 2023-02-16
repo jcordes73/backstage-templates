@@ -84,72 +84,68 @@ spec:
           default: false
       dependencies:
         amqp:
-          oneOf:
-            - properties:
-                amqp: true
-                amqp_broker_host:
-                  title: AMQP Broker
-                  type: string
-                  description: The AMQP Broker to be used
-                  default: amq-broker-hdls-svc
-                amqp_broker_port:
-                  title: AMQP Broker Port
-                  type: string
-                  description: AMQP Broker Port
-                  default: 5672
-                amqp_broker_user:
-                  title: AMQP Broker User
-                  type: string
-                  description: AMQP Broker User
-                  default: 'admin'
-                amqp_broker_user_password:
-                  title: AMQP Broker User Password
-                  type: string
-                  description: AMQP Broker User Password
-                  default: 'admin'
+          properties:
+            amqp_broker_host:
+              title: AMQP Broker
+              type: string
+              description: The AMQP Broker to be used
+              default: amq-broker-hdls-svc
+            amqp_broker_port:
+              title: AMQP Broker Port
+              type: string
+              description: AMQP Broker Port
+              default: 5672
+            amqp_broker_user:
+              title: AMQP Broker User
+              type: string
+              description: AMQP Broker User
+              default: 'admin'
+            amqp_broker_user_password:
+              title: AMQP Broker User Password
+              type: string
+              description: AMQP Broker User Password
+              default: 'admin'
         jpa:
-          oneOf:
-            - properties:
-                jpa: true
-                database_type:
-                  title: Database
-                  type: string
-                  description: The database to be used
-                  default: postgresql
-                  enum:
-                    - postgresql
-                    - mysql
-                    - mariadb
-                  enumNames:
-                    - 'PostgreSQL'
-                    - 'MySQL'
-                    - 'MariaDB'
-                  ui:widget: radio
-                database_host:
-                  title: Database Host
-                  type: string
-                  description: Database Host
-                  default: 'localhost'
-                database_port:
-                  title: Database Port
-                  type: string
-                  description: Database Port
-                  default: 5432
-                database_name:
-                  title: Database Name
-                  type: string
-                  description: Database Name 
-                  default: database
-                database_user:
-                  title: Database User
-                  type: string
-                  description: Database User
-                  default: 'user'
-                database_user_password:
-                  title: Database User Password
-                  type: string
-                  description: Database User Password
-                  default: 'password'
+          properties:
+            database_type:
+              title: Database
+              type: string
+              description: The database to be used
+              default: postgresql
+              enum:
+                - postgresql
+                - mysql
+                - mariadb
+              enumNames:
+                - 'PostgreSQL'
+                - 'MySQL'
+                - 'MariaDB'
+              ui:widget: radio
+            database_host:
+              title: Database Host
+              type: string
+              description: Database Host
+              default: 'localhost'
+            database_port:
+              title: Database Port
+              type: string
+              description: Database Port
+              default: 5432
+            database_name:
+              title: Database Name
+              type: string
+              description: Database Name 
+              default: database
+            database_user:
+              title: Database User
+              type: string
+              description: Database User
+              default: 'user'
+            database_user_password:
+              title: Database User Password
+              type: string
+              description: Database User Password
+              default: 'password'
     - title: Choose an organizationl Owner and a GitHub location
       required:
         - owner
