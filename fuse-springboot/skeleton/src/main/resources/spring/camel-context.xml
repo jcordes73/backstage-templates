@@ -28,9 +28,9 @@
   <bean id="jmsConnectionFactory"
         class="org.apache.qpid.jms.JmsConnectionFactory"
         primary="true" xmlns="http://www.springframework.org/schema/beans">
-    <property name="remoteURI"><xsl:attribute name="value">${amqp.uri}</xsl:attribute></property>
-    <property name="username"><xsl:attribute name="value">${amqp.username}</xsl:attribute></property>
-    <property name="password"><xsl:attribute name="value">${amqp.password}</xsl:attribute></property>
+    <property name="remoteURI" value="${amqp.uri}"/>
+    <property name="username" value="${amqp.username}"/>
+    <property name="password" value="${amqp.password}"/>
   </bean>
   <bean id="jmsCachingConnectionFactory"
         class="org.springframework.jms.connection.CachingConnectionFactory" xmlns="http://www.springframework.org/schema/beans">
