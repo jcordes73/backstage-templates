@@ -61,5 +61,9 @@
 {% endif %}
 {%- endfor %}
   <camelContext xmlns="http://camel.apache.org/schema/spring" streamCache="true">
+    <route>
+      <from uri="timer:timer"/>
+      <log message="Timer fired at ${headers.firedTime}"/>
+    </route>
   </camelContext>
 </beans>
