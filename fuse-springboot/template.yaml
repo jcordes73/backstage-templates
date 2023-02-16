@@ -56,6 +56,9 @@ spec:
     - title: Apache Camel Features
       required:
         - fuse_version
+        - amqp
+        - cxf
+        - jpa
       properties:
         fuse_version:
           title: Fuse Version
@@ -77,7 +80,7 @@ spec:
           type: boolean
           ui:widget: radio
           default: false
-        database:
+        jpa:
           title: JPA
           type: boolean
           ui:widget: radio
