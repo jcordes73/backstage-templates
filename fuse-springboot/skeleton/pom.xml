@@ -13,7 +13,7 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-	<fuse.bom.version>${{value.fuse_version}}</fuse.bom.version>
+	<fuse.bom.version>${{values.fuse_version}}</fuse.bom.version>
         <jkube.version>1.8.0</jkube.version>
         <jkube.generator.from>openshift/fuse7-java11-openshift:1.11</jkube.generator.from>
         <jkube.generator.fromMode>istag</jkube.generator.fromMode>
