@@ -277,7 +277,25 @@
               <filtering>false</filtering>
             </testResource>
           </testResources>
-          <plugins>
+	  <plugins>
+{% if values.rest and values.rest_openapi_spec %}
+           <plugin>
+              <groupId>org.apache.camel</groupId>
+              <artifactId>camel-openapi-rest-dsl-generator</artifactId>
+              <executions>
+                <execution>
+                  <goals>
+                    <goal>generate-xml</goal>
+                  </goals>
+                </execution>
+              </executions>
+              <configuration>
+                <specificationUri>${{values.rest_openapi_spec}}</specificationUri>
+                <fileName>camel-rest.xml</className>
+                <outputDirectory>${project.build.directory}/generated-sources/src/main/resources/camel</outputDirectory>
+              </configuration>
+            </plugin>
+{% endif %}
             <plugin>
               <groupId>org.apache.maven.plugins</groupId>
               <artifactId>maven-compiler-plugin</artifactId>

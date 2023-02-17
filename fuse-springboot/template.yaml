@@ -142,31 +142,96 @@ spec:
                     - 'MySQL'
                     - 'MariaDB'
                   ui:widget: radio
-                database_host:
-                  title: Database Host
-                  type: string
-                  description: Database Host
-                  default: 'localhost'
-                database_port:
-                  title: Database Port
-                  type: number
-                  description: Database Port
-                  default: 5432
-                database_name:
-                  title: Database Name
-                  type: string
-                  description: Database Name 
-                  default: database
-                database_user:
-                  title: Database User
-                  type: string
-                  description: Database User
-                  default: 'user'
-                database_user_password:
-                  title: Database User Password
-                  type: string
-                  description: Database User Password
-                  default: 'password'
+              dependencies:
+                database_type:
+                  oneOf:
+                    - properties:
+                        database_type:
+                          enum:
+                            - postgresql
+                        database_host:
+                          title: Database Host
+                          type: string
+                          description: Database Host
+                          default: 'postgresql'
+                        database_port:
+                          title: Database Port
+                          type: number
+                          description: Database Port
+                          default: 5432
+                        database_name:
+                          title: Database Name
+                          type: string
+                          description: Database Name 
+                          default: postgres
+                        database_user:
+                          title: Database User
+                          type: string
+                          description: Database User
+                          default: 'postgres'
+                        database_user_password:
+                          title: Database User Password
+                          type: string
+                          description: Database User Password
+                          default: 'postgres'
+                    - properties:
+                        database_type:
+                          enum:
+                            - mysql 
+                        database_host:
+                          title: Database Host
+                          type: string
+                          description: Database Host
+                          default: 'mysql'
+                        database_port:
+                          title: Database Port
+                          type: number
+                          description: Database Port
+                          default: 3306
+                        database_name:
+                          title: Database Name
+                          type: string
+                          description: Database Name
+                          default: mysql
+                        database_user:
+                          title: Database User
+                          type: string
+                          description: Database User
+                          default: 'mysql'
+                        database_user_password:
+                          title: Database User Password
+                          type: string
+                          description: Database User Password
+                          default: 'mysql'
+                    - properties:
+                        database_type:
+                          enum:
+                            - mariadb
+                        database_host:
+                          title: Database Host
+                          type: string
+                          description: Database Host
+                          default: 'mariadb'
+                        database_port:
+                          title: Database Port
+                          type: number
+                          description: Database Port
+                          default: 3306
+                        database_name:
+                          title: Database Name
+                          type: string
+                          description: Database Name
+                          default: mariadb
+                        database_user:
+                          title: Database User
+                          type: string
+                          description: Database User
+                          default: 'mariadb'
+                        database_user_password:
+                          title: Database User Password
+                          type: string
+                          description: Database User Password
+                          default: 'mariadb'
         kafka:
           oneOf:
             - properties:
