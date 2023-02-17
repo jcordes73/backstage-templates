@@ -331,7 +331,7 @@ spec:
       action: fetch:plain
       input:
         url: ${{ parameters.rest_openapi_spec }}
-        targetPath: ./src/spec/openapi-spec.json
+        targetPath: ./src/main/resources/openapi-spec.json
     - id: publish
       name: Publishing to Source Code Repository
       action: publish:github

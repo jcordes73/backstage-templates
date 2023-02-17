@@ -234,7 +234,7 @@
                 </execution>
               </executions>
 	      <configuration>
-                <specificationUri>${project.basedir}/src/spec/openapi-spec.json</specificationUri>
+                <specificationUri>${project.basedir}/src/main/resources/openapi-spec.json</specificationUri>
                 <fileName>camel-rest.xml</fileName>
 		<outputDirectory>${project.build.directory}/generated-sources/src/main/resources/camel</outputDirectory>
               </configuration>
@@ -297,7 +297,7 @@
                 </execution>
               </executions>
               <configuration>
-                <specificationUri>${project.basedir}/src/spec/openapi-spec.json</specificationUri>
+                <specificationUri>${project.basedir}/src/main/resources/openapi-spec.json</specificationUri>
                 <fileName>camel-rest.xml</fileName>
                 <outputDirectory>${project.build.directory}/generated-sources/src/main/resources/camel</outputDirectory>
               </configuration>
