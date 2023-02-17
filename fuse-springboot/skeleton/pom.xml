@@ -110,6 +110,16 @@
         <artifactId>camel-kafka-starter</artifactId>
       </dependency>
       {% endif %}
+      {% if values.rest %}
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-rest-starter</artifactId>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-servlet</artifactId>
+      </dependency>
+      {% endif %}
       {% if values.sql %}
       <dependency>
         <groupId>org.apache.camel</groupId>
@@ -164,33 +174,6 @@
       </dependency>
     </dependencies>
 
-    <build>
-       <defaultGoal>oc:deploy</defaultGoal>
-       <plugins>
-	    <plugin>
-		 <groupId>org.eclipse.jkube</groupId>
-                 <artifactId>openshift-maven-plugin</artifactId>
-                 <version>${jkube.version}</version>
-                 <configuration>
-                    <enricher>
-                       <excludes>
-                           <exclude>jkube-git</exclude>
-                       </excludes>
-                    </enricher>
-                 </configuration>
-                 <executions>
-                    <execution>
-                       <goals>
-                          <goal>resource</goal>
-                          <goal>build</goal>
-                          <goal>apply</goal>
-                       </goals>
-                    </execution>
-                </executions>
-            </plugin>
-       </plugins>
-    </build>
-
     <repositories>
         <repository>
             <id>redhat-ga-repository</id>
@@ -240,13 +223,26 @@
     <profiles>
       <profile>
         <id>openshift</id>
-        <activation>
-          <file>
-             <missing>skip.build</missing>
-          </file>
-        </activation>
         <build>
           <plugins>
+{% if values.rest and values.rest_openapi_spec %}
+           <plugin>
+              <groupId>org.apache.camel</groupId>
+	      <artifactId>camel-openapi-rest-dsl-generator</artifactId>
+	      <executions>
+                <execution>
+                  <goals>
+                    <goal>generate-xml</goal>
+                  </goals>
+                </execution>
+              </executions>
+	      <configuration>
+                <specificationUri>${{values.rest_openapi_spec}}</specificationUri>
+                <fileName>camel-rest.xml</className>
+		<outputDirectory>${project.build.directory}/generated-sources/src/main/resources/camel</outputDirectory>
+              </configuration>
+            </plugin>
+{% endif %}
             <plugin>
               <groupId>org.eclipse.jkube</groupId>
 	      <artifactId>openshift-maven-plugin</artifactId>
@@ -274,11 +270,6 @@
       </profile>
       <profile>
         <id>local</id>
-        <activation>
-          <file>
-            <missing>skip.build</missing>
-          </file>
-        </activation>
         <build>
           <testResources>
             <testResource>

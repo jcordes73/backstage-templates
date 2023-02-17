@@ -59,6 +59,8 @@ spec:
         - amqp
         - cxf
         - jpa
+        - kafka
+        - rest
       properties:
         fuse_version:
           title: Fuse Version
@@ -87,6 +89,11 @@ spec:
           default: false
         kafka:
           title: Kafka
+          type: boolean
+          ui:widget: radio
+          default: false
+        rest:
+          title: REST
           type: boolean
           ui:widget: radio
           default: false
@@ -170,7 +177,16 @@ spec:
                   type: string
                   description: The Kafka Brokers to be used
                   default: my-cluster-kafka-bootstrap:9092
-    - title: Choose an organizationl Owner and a GitHub location
+        rest:
+          oneOf:
+            - properties:
+                rest:
+                  const: true
+                rest_openapi_spec:
+                  title: Open API Specification Location
+                  type: string
+                  description: The location of an Open API Specification
+    - title: Owner and GitHub location
       required:
         - owner
         - repoUrl
@@ -227,6 +243,8 @@ spec:
           jpa: ${{ parameters.jpa }}
           kafka: ${{ parameters.kafka }}
           kafka_brokers: ${{ parameters.kafka_brokers }}
+          rest: ${{ parameters.rest }}
+          rest_openapi_spec: ${{ parameters.rest_openapi_spec }}
     - id: template-persistence
       if: ${{ parameters.jpa }}
       name: Generating Persistence Resources

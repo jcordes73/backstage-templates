@@ -59,6 +59,9 @@
   </bean>
 {% endif %}
   <camelContext xmlns="http://camel.apache.org/schema/spring" streamCache="true">
+{% if values.rest %}
+    <restConfiguration bindingMode="auto" component="servlet" port="8080"/>
+{% endif %}
     <route>
       <from uri="timer:timer"/>
       <log message="Timer fired at ${headers.firedTime}"/>
