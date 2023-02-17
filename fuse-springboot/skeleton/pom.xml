@@ -224,7 +224,7 @@
 {% if values.rest and values.rest_openapi_spec %}
            <plugin>
               <groupId>org.apache.camel</groupId>
-	      <artifactId>camel-openapi-rest-dsl</artifactId>
+	      <artifactId>camel-restdsl-openapi-plugin</artifactId>
 	      <version>2.23.2.fuse-7_11_1-00015-redhat-00002</version>
 	      <executions>
                 <execution>
@@ -287,7 +287,7 @@
 {% if values.rest and values.rest_openapi_spec %}
            <plugin>
               <groupId>org.apache.camel</groupId>
-	      <artifactId>camel-openapi-rest-dsl</artifactId>
+	      <artifactId>camel-restdsl-openapi-plugin</artifactId>
 	      <version>2.23.2.fuse-7_11_1-00015-redhat-00002</version>
               <executions>
                 <execution>
@@ -297,7 +297,7 @@
                 </execution>
               </executions>
               <configuration>
-                <specificationUri>${{values.rest_openapi_spec}}</specificationUri>
+                <specificationUri>${project.basedir}/src/spec/openapi-spec.json</specificationUri>
                 <fileName>camel-rest.xml</fileName>
                 <outputDirectory>${project.build.directory}/generated-sources/src/main/resources/camel</outputDirectory>
               </configuration>
