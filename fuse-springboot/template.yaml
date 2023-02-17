@@ -316,7 +316,6 @@ spec:
       action: fetch:template
       input:
         url: ./persistence
-        copyWithoutRender: []
         values:
           database: ${{ parameters.database }}
           database_type: ${{ parameters.database_type }}
@@ -326,6 +325,13 @@ spec:
           database_user: ${{ parameters.database_user }}
           database_user_password: ${{ parameters.database_user_password }}
         targetPath: ./src/main/resources/META-INF
+    - id: fetch-openapi-spec
+      if: ${{ parameters.rest_openapi_spec }}
+      name: Get Open API Spec
+      action: fetch:template
+      input:
+        url: ${{ parameters.rest_openapi_spec }}
+      targetPath: ./src/spec/openapi-spec.json
     - id: publish
       name: Publishing to Source Code Repository
       action: publish:github
